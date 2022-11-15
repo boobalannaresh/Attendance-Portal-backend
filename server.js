@@ -169,6 +169,288 @@ app.delete("/class-1st/:id", authenticate, async function (req, res) {
 
 })
 
+// ----------------------------------------------------------------------------------------------------------------------------------------- //
+
+app.get("/class2-all",authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let resUser = await db.collection("class-2nd").find().toArray();
+        await connection.close()
+        res.json(resUser);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+app.post("/class-2nd", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        await db.collection("class-2nd").insertOne(req.body)
+        await connection.close()
+        res.json({ message: "Data inserted" })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+
+app.get("/class-2nd/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-2nd").findOne({ _id: mongodb.ObjectId(req.params.id) });
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.put("/class-2nd/:id", authenticate, async function (req, res) {
+
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-2nd").findOneAndUpdate({ _id: mongodb.ObjectId(req.params.id) }, { $set: req.body })
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.delete("/class-2nd/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-2nd").findOneAndDelete({ _id: mongodb.ObjectId(req.params.id) })
+        await connection.close()
+
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+app.get("/class3-all",authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let resUser = await db.collection("class-3rd").find().toArray();
+        await connection.close()
+        res.json(resUser);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+app.post("/class-3rd", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        await db.collection("class-3rd").insertOne(req.body)
+        await connection.close()
+        res.json({ message: "Data inserted" })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+
+app.get("/class-3rd/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-3rd").findOne({ _id: mongodb.ObjectId(req.params.id) });
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.put("/class-3rd/:id", authenticate, async function (req, res) {
+
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-3rd").findOneAndUpdate({ _id: mongodb.ObjectId(req.params.id) }, { $set: req.body })
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.delete("/class-3rd/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-3rd").findOneAndDelete({ _id: mongodb.ObjectId(req.params.id) })
+        await connection.close()
+
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+app.get("/class4-all",authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let resUser = await db.collection("class-4th").find().toArray();
+        await connection.close()
+        res.json(resUser);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+app.post("/class-4th", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        await db.collection("class-4th").insertOne(req.body)
+        await connection.close()
+        res.json({ message: "Data inserted" })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+
+app.get("/class-4th/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-4th").findOne({ _id: mongodb.ObjectId(req.params.id) });
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.put("/class-4th/:id", authenticate, async function (req, res) {
+
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-4th").findOneAndUpdate({ _id: mongodb.ObjectId(req.params.id) }, { $set: req.body })
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.delete("/class-4th/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-4th").findOneAndDelete({ _id: mongodb.ObjectId(req.params.id) })
+        await connection.close()
+
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+app.get("/class5-all",authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let resUser = await db.collection("class-5th").find().toArray();
+        await connection.close()
+        res.json(resUser);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+app.post("/class-5th", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        await db.collection("class-5th").insertOne(req.body)
+        await connection.close()
+        res.json({ message: "Data inserted" })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+});
+
+
+app.get("/class-5th/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-5th").findOne({ _id: mongodb.ObjectId(req.params.id) });
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.put("/class-5th/:id", authenticate, async function (req, res) {
+
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-5th").findOneAndUpdate({ _id: mongodb.ObjectId(req.params.id) }, { $set: req.body })
+        await connection.close()
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+app.delete("/class-5th/:id", authenticate, async function (req, res) {
+    try {
+        const connection = await mongoClient.connect(URL);
+        const db = connection.db(DB);
+        let user = await db.collection("class-5th").findOneAndDelete({ _id: mongodb.ObjectId(req.params.id) })
+        await connection.close()
+
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something-went-wrong" })
+    }
+})
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 app.post("/register", async function (req, res) {
     try {
